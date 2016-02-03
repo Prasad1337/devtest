@@ -14,14 +14,13 @@ public class ParentViewMapperImpl implements ParentViewMapper
         // traversing list of parentRows and adding to final results list
         for(ParentRow par : parentRows)
         {
-            IDList.add(par.getParentId().toLowerCase());
-
             ParentView pV = new ParentView(par.getFirstName(),
                                 par.getLastName(),
                                 par.getAge(),
                                 par.getParentId(),
                                 new ArrayList<ChildView>());
 
+            IDList.add(par.getParentId().toLowerCase());
             outList.add(pV);
         }
 
@@ -43,7 +42,10 @@ public class ParentViewMapperImpl implements ParentViewMapper
             }
 
             else
-            { System.out.println("Insufficient data!\n"); }
+            {
+                System.out.println("Insufficient data!\n");
+                return null;
+            }
         }
 
         return outList;
